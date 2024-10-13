@@ -4,7 +4,7 @@ const numbers = document.querySelectorAll('.number')
 const input = document.querySelector('.input')
 const clear = document.querySelector('.clear') 
 const operations = document.querySelectorAll('.operation')
-currentOperation = ''
+let currentOperation = ''
 const calculate = document.querySelector('.calculate')
 const feedback = document.querySelector('.feedback')
 let a = ''
@@ -39,11 +39,11 @@ clear.addEventListener('click', function () {
 operations.forEach(function(operation) {
     operation.addEventListener('click', function () {
         
-        if (currentOperation === '') {        
+                
         currentOperation = operation.textContent
         input.textContent = currentOperation
         
-        }
+        
 
     })
 
@@ -52,10 +52,13 @@ operations.forEach(function(operation) {
 
 calculate.addEventListener('click', function () {
 
+     
+
     if (currentOperation === '+') {
         const result = parseInt(a) + parseInt(b)
         feedback.textContent = result
-        a = ''
+        a = result
+        input.textContent = a
         b = ''
         result = ''
         currentOperation =''
@@ -64,7 +67,8 @@ calculate.addEventListener('click', function () {
     else if (currentOperation === '*') {
         const result = parseInt(a) * parseInt(b)
         feedback.textContent = result
-        a = ''
+        a = result
+        input.textContent = a
         b = ''
         result = ''
         currentOperation =''
@@ -73,7 +77,8 @@ calculate.addEventListener('click', function () {
     else if (currentOperation === '/') {
         const result = parseInt(a) / parseInt(b)
         feedback.textContent = result
-        a = ''
+        a = result
+        input.textContent = a
         b = ''
         result = ''
         currentOperation =''
@@ -82,14 +87,15 @@ calculate.addEventListener('click', function () {
     else if (currentOperation === '-') {
         const result = parseInt(a) - parseInt(b)
         feedback.textContent = result
-        a = ''
+        a = result
+        input.textContent = a
         b = ''
         result = ''
         currentOperation =''
 
     
     }
-    input.textContent = ''
+   
 })
 
 
