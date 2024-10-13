@@ -1,3 +1,4 @@
+
 function getComputerChoice() {
     randomNumber = Math.floor(Math.random() * 3);
     switch (randomNumber) {
@@ -14,10 +15,6 @@ function getComputerChoice() {
     return computerChoice
 }
 
-function getHumanChoice () {
-    humanChoice = (prompt('RPS Game! Please input your choice:')).toLowerCase()
-    return 
-}
 
 let humanScore = 0 
 let computerScore = 0 
@@ -52,7 +49,7 @@ function playRound (humanChoice, computerChoice) {
         }
 
     }
-    else if (humanChoice === 'ock') {
+    else if (humanChoice === 'rock') {
         if (computerChoice === 'Rock') {
             alert(`Computer picked:${computerChoice} Tie, computer:${computerScore}, you:${humanScore}`)
         }
@@ -68,6 +65,27 @@ function playRound (humanChoice, computerChoice) {
     }
     
 }
-getHumanChoice ()
+
 getComputerChoice()
-playRound(humanChoice, computerChoice)
+
+const rock  = document.querySelector('.rock');
+
+rock.addEventListener('click', function () {
+        humanChoice = 'rock'
+        playRound(humanChoice, computerChoice)
+})
+
+
+const paper  = document.querySelector('.paper');
+
+paper.addEventListener('click', function () {
+        humanChoice = 'paper'
+        playRound(humanChoice, computerChoice)
+})
+
+const scissors  = document.querySelector('.scissors');
+
+scissors.addEventListener('click', function () {
+        humanChoice = 'scissors'
+        playRound(humanChoice, computerChoice)
+})
