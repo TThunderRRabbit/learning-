@@ -9,6 +9,7 @@ const calculate = document.querySelector('.calculate')
 const feedback = document.querySelector('.feedback')
 let a = ''
 let b = ''
+const percent = document.querySelector('.percent')
 numbers.forEach(function(number) {
     number.addEventListener('click', function () {
     const currentNumber = number.textContent;
@@ -98,6 +99,15 @@ calculate.addEventListener('click', function () {
    
 })
 
+    percent.addEventListener('click', function () {
+
+
+        if (result != '') {
+        feedback.textContent = feedback.textContent/100
+        }
+
+
+    })
 
 });
 
