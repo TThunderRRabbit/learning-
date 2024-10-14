@@ -100,12 +100,18 @@ calculate.addEventListener('click', function () {
 })
 
     percent.addEventListener('click', function () {
-
-
-        if (result != '') {
-        feedback.textContent = feedback.textContent/100
+        
+        if (result == '') {
+            result = parseFloat(a)/100
         }
+        feedback.textContent = result
+        a = result
+        input.textContent = a
+        b = ''
+        result = ''
+        currentOperation =''
 
+        
 
     })
 
