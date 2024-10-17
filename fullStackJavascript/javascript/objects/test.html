@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="lol">lol</div>
+
+    <script>
+
+        const lol = document.querySelector('.lol')
+
+        
+                // example one
+        const playerOneName = "tim";
+        const playerTwoName = "jenn";
+        const playerOneMarker = "X";
+        const playerTwoMarker = "O";
+
+        // example two
+        const playerOne = {
+        name: "tim",
+        marker: "X"
+        };
+
+        const playerTwo = {
+        name: "jenn",
+        marker: "O"
+        };
+
+        function printName (player) {
+            return (player.name)
+            
+        }
+
+        function Player(name, marker) {
+        this.name = name;
+        this.marker = marker;
+        this.sayName = function() {
+            lol.textContent = (this.name)
+        };
+        }
+
+        const player1 = new Player('steve', 'X');
+        const player2 = new Player('also steve', 'O');
+        player1.sayName(); // logs 'steve'
+        player2.sayName(); // logs 'also steve'
+
+    </script>
+</body>
+</html>
