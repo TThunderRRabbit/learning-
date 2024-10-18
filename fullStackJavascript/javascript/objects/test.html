@@ -7,13 +7,13 @@
 </head>
 <body>
     
-<div class="lol">lol</div>
+<div class="div1">lol</div>
 
     <script>
 
-        const lol = document.querySelector('.lol')
+        const div1 = document.querySelector('.div1')
 
-        
+        /*
                 // example one
         const playerOneName = "tim";
         const playerTwoName = "jenn";
@@ -44,11 +44,25 @@
         };
         }
 
+
         const player1 = new Player('steve', 'X');
         const player2 = new Player('also steve', 'O');
-        player1.sayName(); // logs 'steve'
-        player2.sayName(); // logs 'also steve'
+        player2.sayName(); 
+        */ 
 
+        function getInfo(bookName, author, pages, haveRead) {
+            this.author = author;
+            this.bookName = bookName
+            this.pages = pages;
+            this.haveRead = haveRead;
+            this.info = function() {
+                div1.textContent = (bookName + "by " + this.author + ", " + pages + ", " + haveRead)
+            } 
+        }
+
+        const book1 = new getInfo("The hobbit", "J.R.R Tolkien", "295 pages", "not read yet")
+
+        book1.info()
     </script>
 </body>
 </html>

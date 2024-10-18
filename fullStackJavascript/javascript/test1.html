@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <script>
+
+        const div1 = document.querySelectorAll(".div1") 
+        const div2 = document.querySelectorAll(".div2")
+        const person = {
+            greet: function() {
+                div1[0].textContent = ("Hello!");
+            }
+        }
+        person.greet()
+        
+        function Person(name) {
+            this.name = name 
+        }
+
+        Person.prototype.greet = function() {
+            div2[0].textContent = ("Hello, my name is " + this.name);
+        }
+
+        let Jane = new Person("Jane");
+        Jane.greet()
+    </script>
+</body>
+</html>
