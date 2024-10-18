@@ -14,7 +14,6 @@ function addBookToLibrary(book) {
     const authorDiv = document.createElement('div');
     authorDiv.textContent = book.author
 
-
     const titleDiv = document.createElement('div');
     titleDiv.textContent = book.title
 
@@ -24,12 +23,33 @@ function addBookToLibrary(book) {
     const readInput = document.createElement('div');
     readInput.textContent = book.status
 
+    const exitButton = document.createElement('button');
+    const editButton = document.createElement('button');
+    
+    newDiv.appendChild(exitButton)
     newDiv.appendChild(authorDiv)
     newDiv.appendChild(titleDiv)
     newDiv.appendChild(pagesInput)
     newDiv.appendChild(readInput)
-
+    newDiv.appendChild(editButton)
     div1.appendChild(newDiv);
+
+    let edit = false
+    editButton.addEventListener('click', function() {
+
+        edit = !edit;
+        authorDiv.contentEditable = edit;
+        titleDiv.contentEditable = edit;
+        readInput.contentEditable = edit;
+        pagesInput.contentEditable = edit;
+    })
+
+
+    exitButton.addEventListener('click', function() {
+        div1.removeChild(newDiv)
+
+        
+    })
 
 
 } 
