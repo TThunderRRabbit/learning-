@@ -9,7 +9,9 @@
 <body>
 
     <div class="div1"></div>
-    <div class="box">
+    <button id="addForm">+ Add Book</button>
+    <div class="box" style="display:none;">
+        <button id="exitForm">Exit</button>
         <form id="book-input">
         <label for="author">Author:</label>
         <input type="text" id="authorInput" name="author" required>
@@ -18,7 +20,7 @@
         <label for="pages">Pages:</label>
         <input type="text" id="pagesInput" name="author" required>
         <label for="status">Read?:</label>
-        <input type="text" id="readInput" name="author" required>
+        <input type="checkbox" id="readInput" name="author" >
         <button type="submit">Submit</button>
         </form> 
     </div>

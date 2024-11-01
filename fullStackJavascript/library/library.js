@@ -1,72 +1,116 @@
-const bookInput = document.getElementById('book-input')
-const div1 = document.querySelector('.div1')
-function Book(author, title, pages, status) {
-    this.author = author
-    this.title = title
-    this.pages = pages
-    this.status = status
+const box = document.querySelector('.box')
+
+class Book {
+    constructor(author, title, pages, read){
+        this.author = author
+        this.title = title
+        this.pages = pages
+        this.read = read
+    }
+            
 }
 
-function addBookToLibrary(book) {
+class Library{
+    constructor() {
+        this.myLibrary = []
+    }
 
-    const newDiv = document.createElement('div');
+    addBook(book) {
+        this.myLibrary.push(book)
+    }
 
-    const authorDiv = document.createElement('div');
+}
+
+const createBookCard = function(book) {
+    const bookCard = document.createElement('div')
+    bookCard.classList.add('bookCard')
+    const authorDiv = document.createElement('div')
     authorDiv.textContent = book.author
+    authorDiv.classList.add('authorDiv')
 
-    const titleDiv = document.createElement('div');
+    const titleDiv = document.createElement('div')
     titleDiv.textContent = book.title
+    titleDiv.classList.add('titleDiv')
 
-    const pagesInput = document.createElement('div');
-    pagesInput.textContent = book.pages
+    const pagesDiv = document.createElement('div')
+    pagesDiv.textContent = book.pages
+    pagesDiv.classList.add('pagesDiv')
 
-    const readInput = document.createElement('div');
-    readInput.textContent = book.status
+    const readDiv = document.createElement('div')
+    //readDiv.textContent = book.read
+    readDiv.classList.add('readDiv')
+    const readDiv1 = document.createElement('button')
 
-    const exitButton = document.createElement('button');
-    const editButton = document.createElement('button');
-    
-    newDiv.appendChild(exitButton)
-    newDiv.appendChild(authorDiv)
-    newDiv.appendChild(titleDiv)
-    newDiv.appendChild(pagesInput)
-    newDiv.appendChild(readInput)
-    newDiv.appendChild(editButton)
-    div1.appendChild(newDiv);
 
-    let edit = false
+
+    const readDiv2 = document.createElement('button')
+
+    if (book.read == false) {
+        readDiv2.textContent = "Not read"
+    } else {
+        readDiv1.textContent = "Read" 
+    }
+
+    readDiv.classList.add('readDiv')
+
+    const removeButton = document.createElement('button')
+    removeButton.classList.add('removeButton')
+    removeButton.textContent = 'remove'
+/*
+    const editButton = document.createElement('button')
+    editButton.classList.add('editButton')
+    editButton.textContent = 'edit'
+*/
+
+    box.appendChild(bookCard)
+    bookCard.append(authorDiv, titleDiv, pagesDiv, readDiv, removeButton)
+    readDiv.append(readDiv1, readDiv2)
+
+    removeButton.addEventListener('click', function() {
+        box.removeChild(bookCard)
+    })
+
+    /*
+    let editable = false;
+
     editButton.addEventListener('click', function() {
 
-        edit = !edit;
-        authorDiv.contentEditable = edit;
-        titleDiv.contentEditable = edit;
-        readInput.contentEditable = edit;
-        pagesInput.contentEditable = edit;
-    })
+        editable = !editable;
+
+        titleDiv.contentEditable = editable
+        authorDiv.contentEditable = editable
+        pagesDiv.contentEditable = editable
+        readDiv.contentEditable = editable
+
+    }) */
+}
 
 
-    exitButton.addEventListener('click', function() {
-        div1.removeChild(newDiv)
+const bookForm = document.getElementById('book-input')
 
-        
-    })
-
-
-} 
-
-bookInput.addEventListener('submit',function(event) {
-    event.preventDefault();
-    const authorInput = document.getElementById('authorInput').value
-    const titleInput = document.getElementById('titleInput').value
-    const pagesInput = document.getElementById('pagesInput').value
-    const readInput = document.getElementById('readInput').value
-
-    let newBook = new Book(authorInput, titleInput, pagesInput, readInput)
-
-    addBookToLibrary(newBook)
-
-    bookInput.reset();
+bookForm.addEventListener('submit', function(event)
+{ event.preventDefault();
+    const author = document.getElementById('authorInput').value
+    const title = document.getElementById('titleInput').value
+    const pages = document.getElementById('pagesInput').value
+    const read = document.getElementById('readInput').checked
 
 
+    let newBook = new Book(author, title, pages, read)
 
+    console.log(newBook.author)
+    createBookCard(newBook)
+})
+
+const addForm = document.getElementById('addForm')
+
+addForm.addEventListener('click', function() {
+
+    box.style.display = 'block';
+})
+
+const exitForm = document.getElementById('exitForm')
+
+exitForm.addEventListener('click', function() {
+    box.style.display = 'none';
 })
